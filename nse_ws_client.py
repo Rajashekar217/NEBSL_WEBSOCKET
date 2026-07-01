@@ -114,7 +114,7 @@ class NSEWebSocketClient:
 
     def __init__(
         self,
-        endpoint: str = "XXXXXXXXXXXXXXXXXXXXXXX",
+        endpoint: str = "XXXXXXXXXXXXXXXX",
         logger: Optional[logging.Logger] = None,
         queue_size: int = 50000,
     ):
