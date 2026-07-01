@@ -10,8 +10,7 @@ Features:
    Automatic reconnection with exponential backoff
    Heartbeat & timeout detection
    Thread-safe queue-based data delivery
-   Full OHLC + Greeks support
-
+   Full OHLC 
 Author: Northeast Ltd
 Version: 1.0
 Last Updated: June 2026

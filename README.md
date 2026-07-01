@@ -26,7 +26,7 @@
 -  **Real-time Tick Data** - LTP updates every millisecond
 -  **5-Level Order Book** - Full depth data (bid/ask)
 -  **Multi-Segment** - Simultaneous CM (equity) + FO (derivatives) trading
--  **OHLC Data** - Open, High, Low, Close + Greeks
+-  **OHLC Data** - Open, High, Low, Close 
 -  **Index Tracking** - NIFTY50, BANKNIFTY, etc.
 -  **Automatic Reconnection** - Exponential backoff, never lose data
 -  **Heartbeat Detection** - Real-time connection monitoring
@@ -393,34 +393,6 @@ def volume_tracking():
         
         prev_volume = data.volume
 ```
-
-### Example 4: Greeks Monitoring (Options)
-
-```python
-def options_monitoring():
-    """Monitor option Greeks and IV"""
-    client = NSEWebSocketClient()
-    
-    # PE and CE options
-    client.subscribe_fo({
-        78774: "BANKNIFTY_PE",
-        78775: "BANKNIFTY_CE",
-    })
-    
-    client.start()
-    q = client.data_channel()
-    
-    while True:
-        data = q.get()
-        
-        # Note: Greeks come in separate messages from the server
-        # Use data.open, data.high, data.low for IV estimation
-        iv_estimate = (data.high - data.low) / data.ltp * 100
-        
-        print(f"{data.ticker:20} | LTP: {data.ltp:8.2f} | Est. IV: {iv_estimate:.2f}%")
-```
-
----
 
 ## 🏗️ Architecture
 
