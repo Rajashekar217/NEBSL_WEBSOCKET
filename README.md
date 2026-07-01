@@ -4,7 +4,6 @@
 
 ![Version](https://img.shields.io/badge/version-1.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.8+-green.svg)
-![License](https://img.shields.io/badge/license-MIT-orange.svg)
 
 ---
 
@@ -719,32 +718,6 @@ while True:
 
 ---
 
-## 📞 Support
-
-### Getting Help
-
-1. **Check Examples:** `python example.py [1-5]`
-2. **Read Logs:** Check console output and log files
-3. **Enable Debug:** Set logging to DEBUG level
-4. **Check Connection:** Verify internet and NSE server availability
-
-### Common Issues
-
-| Issue | Solution |
-|-------|----------|
-| Can't connect | Verify endpoint, check internet |
-| No data | Subscribe before start, check logs |
-| Queue full | Process data faster, use separate thread |
-| High latency | Move processing to background thread |
-| Memory leak | Ensure data objects are released |
-
----
-
-## 📄 License
-
-MIT License - See LICENSE file for details
-
----
 
 ## 🚀 Version History
 
@@ -757,14 +730,6 @@ MIT License - See LICENSE file for details
 
 ---
 
-## 📧 Contact
-
-**Northeast Ltd - Quantitative Research**
-- Email: support@northeastltd.in
-- Website: https://www.northeastltd.in
-- Docs: https://docs.northeastltd.in
-
----
 
 ## ⭐ Key Points to Remember
 
