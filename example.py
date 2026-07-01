@@ -18,17 +18,17 @@ from nse_ws_client import NSEWebSocketClient, MarketData
 
 # Example 1: Basic Usage
 EXAMPLE_1_CM = {26000: "nifty", 26009: ""}
-EXAMPLE_1_FO = {63939: "NIFTY"}
+EXAMPLE_1_FO = {61088: "BANKNIFTY28JUL2026FUT"}
 
 # Example 2: Depth Analysis
-EXAMPLE_2_FO = {61917: "BANKNIFTY_59"}
+EXAMPLE_2_FO = {61917: "BANKNIFTY28JUL2659000CE"}
 
 # Example 3: OHLC Tracking
 EXAMPLE_3_CM = {26009: "NIFTY"}
 
 # Example 4: Multi-Segment Trading
 EXAMPLE_4_CM = {26000: "NIFTY50"}
-EXAMPLE_4_FO = {61889: "BANKNIFTY_FUT"}
+EXAMPLE_4_FO = {61889: "BANKNIFTY28JUL2658000CE"}
 
 # Example 5: Connection Monitoring
 EXAMPLE_5_CM = {26000: "NIFTY50"}

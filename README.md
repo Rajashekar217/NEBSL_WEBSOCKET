@@ -164,9 +164,9 @@ Subscribe to **derivatives (futures/options)** tokens.
 
 ```python
 client.subscribe_fo({
-    75663: "BANKNIFTY_FUT",
-    78774: "PE_OPTION",
-    75697: "NIFTY_FUT",
+    61088: "BANKNIFTY28JUL2026FUT",
+    61889: "BANKNIFTY28JUL2658000CE",
+    61917: "BANKNIFTY28JUL2659000CE",
 })
 ```
 
@@ -324,7 +324,7 @@ logging.basicConfig(
 # Create client
 client = NSEWebSocketClient()
 client.subscribe_cm({26000: "NIFTY50"})
-client.subscribe_fo({75663: "BANKNIFTY_FUT"})
+client.subscribe_fo({61088: "BANKNIFTY28JUL2026FUT"})
 client.start()
 
 # Receive data
@@ -346,7 +346,7 @@ def arbitrage_strategy():
     
     # Equity + Futures pair
     client.subscribe_cm({26000: "NIFTY50"})
-    client.subscribe_fo({75697: "NIFTY_FUT"})
+    client.subscribe_fo({61088: "BANKNIFTY28JUL2026FUT"})
     
     client.start()
     q = client.data_channel()
@@ -358,9 +358,9 @@ def arbitrage_strategy():
         latest[data.token] = data
         
         # Check if we have both instruments
-        if 26000 in latest and 75697 in latest:
+        if 26000 in latest and 61088 in latest:
             spot = latest[26000].ltp
-            future = latest[75697].ltp
+            future = latest[61088].ltp
             
             # Calculate basis
             basis = future - spot
@@ -377,7 +377,7 @@ def arbitrage_strategy():
 def volume_tracking():
     """Track volume changes"""
     client = NSEWebSocketClient()
-    client.subscribe_fo({75663: "BANKNIFTY_FUT"})
+    client.subscribe_fo({61088: "BANKNIFTY28JUL2026FUT"})
     client.start()
     
     q = client.data_channel()
@@ -527,7 +527,7 @@ socket.create_connection(("xxxxxxxxxxxxxx", xxxxx), timeout=5)
 ```python
 # Must subscribe BEFORE starting
 client.subscribe_cm({26000: "NIFTY50"})
-client.subscribe_fo({75663: "BANKNIFTY_FUT"})
+client.subscribe_fo({61088: "BANKNIFTY28JUL2026FUT"})
 client.start()  # Start AFTER subscribing
 ```
 
@@ -631,7 +631,6 @@ CM_TOKENS = {
     26009: "BANKNIFTY",
     26008: "NIFTY_IT",
     26017: "VIX",
-    26036: "NIFTY200",
     26100: "NIFTY_HEALTHCARE",
 }
 ```
@@ -640,10 +639,10 @@ CM_TOKENS = {
 
 ```python
 FO_TOKENS = {
-    75663: "BANKNIFTY_FUT",
-    75697: "NIFTY_FUT",
-    78774: "BANKNIFTY_PE",    # Options
-    78775: "BANKNIFTY_CE",    # Options
+    61088: "BANKNIFTY28JUL2026FUT",       #futures
+    61917: "BANKNIFTY28JUL2659000CE" ,     # Options
+    61889: "BANKNIFTY28JUL2658000CE",    # Options
+     
 }
 ```
 
