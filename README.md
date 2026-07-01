@@ -624,17 +624,6 @@ while True:
 
 ---
 
-## 📊 Performance
-
-### Benchmarks (Typical)
-
-| Metric | Value |
-|--------|-------|
-| Reconnect Time | <2 seconds |
-| Data Latency | <100ms |
-| Memory per 1000 ticks | ~5 MB |
-| CPU Usage | <2% |
-| Queue throughput | 10,000+ ticks/sec |
 
 ### Optimization Tips
 
