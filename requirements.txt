@@ -1,0 +1,8 @@
+# NSE Live Feed WebSocket Client - Requirements
+# Python 3.8+
+
+# Core WebSocket client
+websocket-client>=1.0.0
+
+# Optional: For better JSON performance
+orjson>=3.8.0

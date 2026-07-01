@@ -1,0 +1,480 @@
+=================================================
+NSE LIVE FEED WEBSOCKET CLIENT 
+=================================================
+================================================================================
+PACKAGE CONTENTS
+================================================================================
+
+DOCUMENTATION FILES (Read in this order):
+────────────────────────────────────────────────────────────────────────────
+
+1. QUICKSTART.md (START HERE! )
+   └─  quick start guide
+   └─ Basic configuration
+   └─ Immediate getting started
+
+2. README.md (COMPREHENSIVE GUIDE)
+   └─ Complete API reference
+   └─ All methods and properties
+   └─ Detailed examples
+   └─ Architecture explanation
+   └─ Troubleshooting guide
+   └─ Performance tips
+
+3. SETUP.md (INSTALLATION GUIDE)
+   └─ Step-by-step setup instructions
+   └─ Virtual environment creation
+   └─ Dependency installation
+   └─ Configuration files
+   
+
+4. PACKAGE_SUMMARY.txt (THIS FILE)
+   └─ Overview of all files
+   └─ File descriptions
+   └─ Usage guide
+
+────────────────────────────────────────────────────────────────────────────
+
+💻 CORE LIBRARY FILES:
+────────────────────────────────────────────────────────────────────────────
+
+1. nse_ws_client.py (MAIN LIBRARY)
+   └─ Size: ~15 KB
+   └─ NSEWebSocketClient class
+   └─ MarketData and DepthLevel dataclasses
+   └─ Full thread-safe implementation
+   └─ Auto-reconnect with exponential backoff
+   └─ Ready for production use
+   
+   Key Classes:
+   - NSEWebSocketClient: Main client
+   - MarketData: Data structure for market data
+   - DepthLevel: Individual depth level
+   
+   Key Methods:
+   - subscribe_cm()/subscribe_fo(): Subscribe to tokens
+   - start()/stop(): Control client lifecycle
+   - data_channel(): Get data queue
+   - get_status(): Connection status
+
+2. example.py (USAGE EXAMPLES)
+   └─ Size: ~12 KB
+   └─ 5 complete working examples
+   └─ Run with: python example.py [1-5]
+   
+   Examples Included:
+   1. Basic usage (connect & receive)
+   2. Depth data analysis (bid/ask levels)
+   3. OHLC tracking (candlestick data)
+   4. Multi-segment trading (cash vs futures)
+   5. Connection monitoring
+
+3. test_client.py (VERIFICATION SCRIPT)
+   └─ Size: ~8 KB
+   └─ Comprehensive installation test
+   └─ Verifies all dependencies
+   └─ Tests connection to NSE
+   └─ Run with: python test_client.py
+
+────────────────────────────────────────────────────────────────────────────
+
+🔧 CONFIGURATION FILES:
+────────────────────────────────────────────────────────────────────────────
+
+1. requirements.txt
+   └─ Python package dependencies
+   └─ Install with: pip install -r requirements.txt
+   
+   Contents:
+   - websocket-client (required)
+   - orjson (optional, for faster JSON)
+   - pytest (optional, for testing)
+
+================================================================================
+QUICK START GUIDE
+================================================================================
+
+For the impatient (5 minutes):
+
+1. Install dependencies:
+   $ pip install -r requirements.txt
+
+2. Verify installation:
+   $ python test_client.py
+
+3. Run examples:
+   $ python example.py 1
+
+4. Create your bot (see QUICKSTART.md for recipes)
+
+5. Run your bot:
+   $ python your_bot.py
+
+================================================================================
+DETAILED SETUP INSTRUCTIONS
+================================================================================
+
+Step 1: Create Project Directory
+────────────────────────────────────────────────────────────────────────────
+
+  mkdir NEBSL_WEBSOCKET
+  cd NEBSL_WEBSOCKET
+
+Step 2: Copy Files
+────────────────────────────────────────────────────────────────────────────
+
+  Copy these files to your project directory:
+  - nse_ws_client.py
+  - example.py
+  - test_client.py
+  - requirements.txt
+  - README.md
+  - SETUP.md
+  - QUICKSTART.md
+
+Step 3: Create Virtual Environment (Recommended)
+────────────────────────────────────────────────────────────────────────────
+
+  python -m venv venv
+  
+  # On Linux/macOS:
+  source venv/bin/activate
+  
+  # On Windows:
+  venv\Scripts\activate
+
+Step 4: Install Dependencies
+────────────────────────────────────────────────────────────────────────────
+
+  pip install -r requirements.txt
+
+Step 5: Test Installation
+────────────────────────────────────────────────────────────────────────────
+
+  python test_client.py
+  
+  Expected output:
+   All tests passed
+
+Step 6: Run Examples
+────────────────────────────────────────────────────────────────────────────
+
+  python example.py 1
+  python example.py 2
+  python example.py 3
+
+Step 7: Create Your Bot
+────────────────────────────────────────────────────────────────────────────
+
+  See QUICKSTART.md for recipes and templates
+
+================================================================================
+FILE DESCRIPTIONS
+================================================================================
+
+📖 Documentation Files:
+────────────────────────────────────────────────────────────────────────────
+
+README.md
+  Purpose: Comprehensive API reference and guide
+  Contains: 
+    - Full API reference for all classes and methods
+    - Detailed property descriptions
+    - Complete working examples
+    - Architecture diagram
+    - Troubleshooting section
+    - Performance optimization tips
+    - Token reference
+    - FAQ and common issues
+  When to use:
+    - For complete API understanding
+    - When implementing complex features
+    - For troubleshooting
+    - For performance tuning
+
+SETUP.md
+  Purpose: Step-by-step installation and configuration
+  Contains:
+    - System requirements check
+    - Virtual environment setup
+    - Dependency installation
+    - Configuration examples
+    - Proxy/firewall setup
+    - Performance optimization
+    - Monitoring setup
+  When to use:
+    - First time installation
+    - Setting up production environment
+    - Configuring advanced features
+    - Debugging installation issues
+
+QUICKSTART.md
+  Purpose: Get started in 5 minutes
+  Contains:
+    - Minimal 5-minute setup
+    - Common recipe snippets
+    - Quick examples
+    - Common tokens reference
+    - Common issues and fixes
+  When to use:
+    - First time users
+    - Quick reference
+    - Need a working example fast
+
+PACKAGE_SUMMARY.txt (this file)
+  Purpose: Overview of all files and how to use them
+  Contains:
+    - File list with descriptions
+    - Quick start instructions
+    - File purposes
+    - Usage scenarios
+
+────────────────────────────────────────────────────────────────────────────
+
+💻 Code Files:
+────────────────────────────────────────────────────────────────────────────
+
+nse_ws_client.py
+  Purpose: Main client library
+  Contains:
+    - NSEWebSocketClient class (main client)
+    - MarketData dataclass (data structure)
+    - DepthLevel dataclass (depth level)
+    - Thread-safe queue-based architecture
+    - Auto-reconnect logic
+    - WebSocket message handling
+    - JSON parsing
+  Features:
+     Automatic reconnection
+     Heartbeat detection
+     Thread-safe data delivery
+     Full OHLC support
+     5-level depth data
+     Multiple segment support (CM + FO)
+  Usage:
+    from nse_ws_client import NSEWebSocketClient
+    client = NSEWebSocketClient()
+    client.subscribe_cm({26000: "NIFTY50"})
+    client.start()
+    q = client.data_channel()
+    data = q.get()
+
+example.py
+  Purpose: Working examples and templates
+  Contains:
+    - Example 1: Basic usage
+    - Example 2: Depth analysis
+    - Example 3: OHLC tracking
+    - Example 4: Multi-segment trading
+    - Example 5: Connection monitoring
+  Usage:
+    python example.py 1  # Run example 1
+    python example.py 2  # Run example 2
+    etc.
+
+test_client.py
+  Purpose: Installation verification and testing
+  Contains:
+    - Python version check
+    - Dependency verification
+    - Client import test
+    - Connection test
+    - Data reception test
+    - Status check
+  Usage:
+    python test_client.py
+    
+  Expected output:
+     Test 1: Python Environment
+     Test 2: Required Dependencies
+     Test 3: NSE WebSocket Client Import
+     Test 4: Client Initialization
+     Test 5: Token Subscription
+     Test 6: Connection & Data Reception
+    ...
+     ALL TESTS PASSED
+
+────────────────────────────────────────────────────────────────────────────
+
+🔧 Configuration Files:
+────────────────────────────────────────────────────────────────────────────
+
+requirements.txt
+  Purpose: Python package dependencies
+  Contains:
+    websocket-client>=1.0.0    (required)
+    orjson>=3.8.0              (optional)
+    pytest>=7.0.0              (optional)
+  Usage:
+    pip install -r requirements.txt
+
+================================================================================
+USAGE SCENARIOS
+================================================================================
+
+Scenario 1: First Time User (5 minutes)
+────────────────────────────────────────────────────────────────────────────
+
+  1. Read: QUICKSTART.md
+  2. Install: pip install -r requirements.txt
+  3. Test: python test_client.py
+  4. Run example: python example.py 1
+  5. Start coding using recipes in QUICKSTART.md
+
+Scenario 2: Need Detailed API Docs
+────────────────────────────────────────────────────────────────────────────
+
+  1. Open: README.md
+  2. Search for method name in "API Reference" section
+  3. See parameters and examples
+
+Scenario 3: Setting Up Production Bot
+────────────────────────────────────────────────────────────────────────────
+
+  1. Read: SETUP.md (Step 7: Create Your Bot)
+  2. Follow: Configuration section
+  3. Implement: Your trading strategy
+  4. Monitor: Health checks
+
+Scenario 4: Troubleshooting Connection Issues
+────────────────────────────────────────────────────────────────────────────
+
+  1. Run: python test_client.py
+  2. Check: Test output for failures
+  3. Read: README.md "Troubleshooting" section
+  4. Try: Suggested solutions
+
+Scenario 5: Optimizing for High-Frequency Trading
+────────────────────────────────────────────────────────────────────────────
+
+  1. Read: README.md "Performance" section
+  2. Configure: Larger queue (100,000 items)
+  3. Use: Separate thread for processing
+  4. Monitor: Queue size and latency
+
+================================================================================
+COMMON TASKS
+================================================================================
+
+Task: Subscribe to tokens
+────────────────────────────────────────────────────────────────────────────
+
+  from nse_ws_client import NSEWebSocketClient
+  
+  client = NSEWebSocketClient()
+  
+  # Equity (CM)
+  client.subscribe_cm({26000: "NIFTY50"})
+  
+  # Derivatives (FO)
+  client.subscribe_fo({75663: "BANKNIFTY_FUT"})
+  
+  client.start()
+
+Task: Get Latest Price
+────────────────────────────────────────────────────────────────────────────
+
+  q = client.data_channel()
+  data = q.get()
+  print(f"LTP: {data.ltp}")
+
+Task: Analyze Order Book
+────────────────────────────────────────────────────────────────────────────
+
+  for level in data.bid_levels:
+      print(f"Bid: {level['price']} x {level['qty']}")
+  
+  for level in data.ask_levels:
+      print(f"Ask: {level['price']} x {level['qty']}")
+
+Task: Monitor Connection Health
+────────────────────────────────────────────────────────────────────────────
+
+  status = client.get_status()
+  if not status['connected']:
+      print("Connection lost")
+  
+  if status['data_flow_seconds'] > 5:
+      print("No recent data")
+
+Task: Calculate Basis (Spot vs Futures)
+────────────────────────────────────────────────────────────────────────────
+
+  latest = {}
+  while True:
+      data = q.get()
+      latest[data.token] = data
+      
+      if 26000 in latest and 75697 in latest:
+          basis = latest[75697].ltp - latest[26000].ltp
+          print(f"Basis: {basis}")
+
+================================================================================
+SUPPORT & HELP
+================================================================================
+
+Documentation Tree:
+  QUICKSTART.md    ← Start here (5 min)
+      ↓
+  README.md        ← Full API reference
+      ↓
+  SETUP.md         ← Advanced configuration
+      ↓
+  Code examples    ← example.py
+      ↓
+  Test & debug     ← test_client.py
+
+Getting Help:
+  1. Check QUICKSTART.md for recipes
+  2. Read README.md API reference
+  3. Look at example.py
+  4. Run test_client.py for diagnostics
+  5. Enable debug logging
+
+Troubleshooting:
+  1. python test_client.py (diagnose issues)
+  2. Check logs for error messages
+  3. Enable debug logging (see SETUP.md)
+  4. Read Troubleshooting in README.md
+
+Common Errors:
+  - ModuleNotFoundError: pip install -r requirements.txt
+  - No data: Check market hours (9:15 AM - 3:30 PM IST)
+  - Connection refused: Check internet connection
+
+================================================================================
+VERSION INFORMATION
+================================================================================
+
+Package Version: 1.0
+Release Date: June 2026
+Python Version: 3.8+
+Last Updated: 2026-06-30
+
+Features:
+   Real-time tick data
+   5-level order book
+   OHLC data
+   Multi-segment support
+   Automatic reconnection
+   Thread-safe
+   Production-ready
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Read QUICKSTART.md (5 minutes)
+2. Install dependencies (pip install -r requirements.txt)
+3. Run test (python test_client.py)
+4. Run examples (python example.py 1)
+5. Build your bot (use recipes from QUICKSTART.md)
+6. Start trading!
+
+================================================================================
+
+Questions? See README.md for comprehensive documentation.
+
+Happy Trading! 🚀
+
+================================================================================
